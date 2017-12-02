@@ -9,15 +9,19 @@ public class Slime : MonoBehaviour {
 	private Animator anim;
 	public Sprite[] heads;
 	private SpriteRenderer rend;
+	private LineRenderer lineRend;
+	private Spawner spawner;
 
 	private float speed;
 	public float minSpeed;
 	public float maxSpeed;
 
-
+	private bool hasDamaged;
 
 
 	void Start(){	
+
+		spawner = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<Spawner>();
 
 		int randHead = Random.Range(0, heads.Length);
 		rend = GetComponent<SpriteRenderer>();
@@ -28,12 +32,18 @@ public class Slime : MonoBehaviour {
 		speed = Random.Range(minSpeed, maxSpeed);
 		planet = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-
+		lineRend = GetComponent<LineRenderer>();
+		lineRend.enabled = false;
+	
+		
 	}
 
 
 	void Update(){
 		transform.position = Vector2.MoveTowards(transform.position, planet.position, speed * Time.deltaTime);
+
+		lineRend.SetPosition(0, transform.position);
+		lineRend.SetPosition(1, planet.position);
 	}
 
 
@@ -41,10 +51,24 @@ public class Slime : MonoBehaviour {
 		if(other.CompareTag("Player")){
 			speed = 0;
 			this.gameObject.transform.parent = other.transform;
+
+			if(spawner.startTimeBtwSpawns > 0.3f && hasDamaged == false){
+				hasDamaged = true;
+				spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns - spawner.decrement;
+			}
 		} else if(other.CompareTag("Slime")){
+			
 			speed = 0;
 			this.gameObject.transform.parent = planet.transform;
+
+			if(spawner.startTimeBtwSpawns > 0.3f && hasDamaged == false){
+				hasDamaged = true;
+				spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns - spawner.decrement;
+			}
+
 		}
+
+		lineRend.enabled = true;
 	}
 
 	public void Death(){

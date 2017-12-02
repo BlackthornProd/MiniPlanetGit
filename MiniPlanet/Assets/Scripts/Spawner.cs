@@ -18,13 +18,12 @@ public class Spawner : MonoBehaviour {
 
 	void Update(){
 
+		Debug.Log(startTimeBtwSpawns);
+
 		if(timeBtwSpawns <= 0){
 			int rand = Random.Range(0, poses.Length);
 			int randSlime = Random.Range(0, slimes.Length);
 			Instantiate(slimes[randSlime], poses[rand].position, Quaternion.identity);
-			if(startTimeBtwSpawns > 0.75f){
-				startTimeBtwSpawns = startTimeBtwSpawns - decrement;
-			}
 			timeBtwSpawns = startTimeBtwSpawns;
 		} else {
 			timeBtwSpawns -= Time.deltaTime;

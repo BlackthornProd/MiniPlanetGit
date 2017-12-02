@@ -6,13 +6,20 @@ public class Gold : MonoBehaviour {
 
 	public GameObject effect;
 	private Transform planet;
+	private Shake shake;
+	private Spawner spawner;
 
 	private float speed;
 	public float minSpeed;
 	public float maxSpeed;
 
+
+
 	void Start(){
 
+		spawner = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<Spawner>();
+
+		shake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Shake>();
 		planet = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
 		speed = Random.Range(minSpeed, maxSpeed);
@@ -27,8 +34,10 @@ public class Gold : MonoBehaviour {
 
 		if(other.CompareTag("Slime")){
 			other.GetComponent<Slime>().Death();
+			spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns + spawner.decrement;
 		}
 
+		shake.Shaker(0.125f, 0.125f);
 		Instantiate(effect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
