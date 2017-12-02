@@ -5,10 +5,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
 	public Transform[] poses;
-	public GameObject slime;
+	public GameObject[] slimes;
 
 	private float timeBtwSpawns;
 	public float startTimeBtwSpawns;
+	public float decrement;
 
 	void Start(){
 
@@ -19,7 +20,11 @@ public class Spawner : MonoBehaviour {
 
 		if(timeBtwSpawns <= 0){
 			int rand = Random.Range(0, poses.Length);
-			Instantiate(slime, poses[rand].position, Quaternion.identity);
+			int randSlime = Random.Range(0, slimes.Length);
+			Instantiate(slimes[randSlime], poses[rand].position, Quaternion.identity);
+			if(startTimeBtwSpawns > 0.75f){
+				startTimeBtwSpawns = startTimeBtwSpawns - decrement;
+			}
 			timeBtwSpawns = startTimeBtwSpawns;
 		} else {
 			timeBtwSpawns -= Time.deltaTime;

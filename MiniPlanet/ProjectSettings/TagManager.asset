@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Slime
   - Protection
+  - Wall
+  - GameMaster
   layers:
   - Default
   - TransparentFX

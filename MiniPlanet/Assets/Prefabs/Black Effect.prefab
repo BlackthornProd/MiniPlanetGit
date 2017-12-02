@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198015317379296524}
   - component: {fileID: 199621244805706024}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Black Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
