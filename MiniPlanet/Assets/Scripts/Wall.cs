@@ -20,12 +20,15 @@ public class Wall : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.CompareTag("Slime")){
-			panelRed.enabled = true;
-			spawner.enabled = false;
-			player.enabled = false;
-			spawner.stop = true;
-			Instantiate(redCircle, other.transform.position, Quaternion.identity);
-			spawner.StartRout();
+			if(other.GetComponent<Slime>().cantDieTime <= 0){
+				panelRed.enabled = true;
+				spawner.enabled = false;
+				player.enabled = false;
+				spawner.stop = true;
+				Instantiate(redCircle, other.transform.position, Quaternion.identity);
+				spawner.StartRout();
+			}
+		
 		}	
 	}
 

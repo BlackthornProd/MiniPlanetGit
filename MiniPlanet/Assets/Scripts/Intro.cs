@@ -9,7 +9,11 @@ public class Intro : MonoBehaviour {
 	public int currentPanel;
 	public Animator FadePanel;
 
+	private AudioSource source;
+	public AudioClip click;
+
 	void Start(){
+		source = GetComponent<AudioSource>();
 		FadePanel.SetTrigger("FadeOut");
 	}
 
@@ -33,7 +37,8 @@ public class Intro : MonoBehaviour {
 	}
 
 	public void NextPanel(){
-		
+		source.clip = click;
+		source.Play();
 		currentPanel++;
 	}
 

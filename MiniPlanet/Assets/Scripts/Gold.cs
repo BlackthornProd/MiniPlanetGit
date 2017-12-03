@@ -13,7 +13,9 @@ public class Gold : MonoBehaviour {
 	public float minSpeed;
 	public float maxSpeed;
 
+	private Planet player;
 
+	public float cantDieTime = 0.5f;
 
 	void Start(){
 
@@ -21,6 +23,7 @@ public class Gold : MonoBehaviour {
 
 		shake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Shake>();
 		planet = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Planet>();
 
 		speed = Random.Range(minSpeed, maxSpeed);
 	}
@@ -31,6 +34,10 @@ public class Gold : MonoBehaviour {
 		if(spawner.stop == true){
 			speed = 0;
 		}
+
+		if(cantDieTime > 0){
+			cantDieTime -= Time.deltaTime;
+		} 
 	}
 
 
@@ -40,12 +47,16 @@ public class Gold : MonoBehaviour {
 			other.GetComponent<Slime>().Death();
 			Death();
 		}
-		speed = 0;
-		this.gameObject.transform.parent = other.transform;
+		if(cantDieTime <= 0){
+			player.GoldExplode();
+			speed = 0;
+			this.gameObject.transform.parent = other.transform;
+		}
+	
 	}
 
 	public void Death(){
-
+			
 			spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns + spawner.decrement;
 			shake.Shaker(0.125f, 0.125f);
 			Instantiate(effect, transform.position, Quaternion.identity);

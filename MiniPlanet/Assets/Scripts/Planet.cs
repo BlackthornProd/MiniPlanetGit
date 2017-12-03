@@ -6,6 +6,8 @@ public class Planet : MonoBehaviour {
 
 	public float speed;
 	private AudioSource source;
+	public AudioClip explode;
+	public AudioClip explodeGold;
 
 	void Start(){
 		source = GetComponent<AudioSource>();
@@ -18,5 +20,17 @@ public class Planet : MonoBehaviour {
 		} else if(Input.GetKey(KeyCode.RightArrow)){
 			transform.Rotate(Vector3.forward * -speed * Time.deltaTime);
 		} 
+	}
+
+	public void Explode(){
+
+		source.clip = explode;
+		source.Play();
+	}
+
+	public void GoldExplode(){
+		source.clip = explodeGold;
+		source.Play();
+		
 	}
 }

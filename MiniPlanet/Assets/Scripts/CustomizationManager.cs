@@ -18,8 +18,13 @@ public class CustomizationManager : MonoBehaviour {
 	public bool unlocked;
 	public Sprite sun;
 
-	void Start(){
+	public AudioSource source;
+	public AudioClip click;
+	public AudioClip squish;
 
+	void Start(){
+		source = GetComponent<AudioSource>();
+		source.clip = click;
 		visuals = GameObject.FindGameObjectWithTag("Visuals").GetComponent<VisualDetector>();
 		fadePanel.SetTrigger("FadeOut");
 
@@ -47,6 +52,8 @@ public class CustomizationManager : MonoBehaviour {
 
 
 	public void ChangeIndex(){
+		source.clip = squish;
+		source.Play();
 		if(currentIndex < maxIndex){
 			currentIndex++;
 		} else {
@@ -56,8 +63,12 @@ public class CustomizationManager : MonoBehaviour {
 	}
 
 	public void Play(){
-
-		if(currentIndex != 8 && unlocked == false){
+		source.clip = click;
+		source.Play();
+		if(currentIndex == 8 && unlocked == true){
+			StartCoroutine(GoToPlay());
+		} else if(currentIndex != 8 )
+		{
 			StartCoroutine(GoToPlay());
 		}
 

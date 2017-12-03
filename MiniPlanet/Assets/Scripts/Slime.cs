@@ -21,8 +21,10 @@ public class Slime : MonoBehaviour {
 	public AudioClip squish;
 
 
+	private Planet player;
+	bool playedSound;
 
-
+	public float cantDieTime = .5f;
 
 	void Start(){	
 		source = GetComponent<AudioSource>();
@@ -36,6 +38,7 @@ public class Slime : MonoBehaviour {
 		anim.SetBool("Running", true);
 		speed = Random.Range(minSpeed, maxSpeed);
 		planet = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Planet>();
 
 		lineRend = GetComponent<LineRenderer>();
 		lineRend.enabled = false;
@@ -53,13 +56,21 @@ public class Slime : MonoBehaviour {
 
 		lineRend.SetPosition(0, transform.position);
 		lineRend.SetPosition(1, planet.position);
+
+		if(cantDieTime > 0){
+			cantDieTime -= Time.deltaTime;
+		}
+
 	}
 
 
 	void OnTriggerEnter2D(Collider2D other){
+		if(playedSound == false){
+			source.clip = squish;
+			source.Play();
+			playedSound = true;
+		}
 
-		source.clip = squish;
-		source.Play();
 		if(other.CompareTag("Player")){
 			speed = 0;
 			this.gameObject.transform.parent = other.transform;
@@ -79,12 +90,14 @@ public class Slime : MonoBehaviour {
 			}
 
 		}
+		if(cantDieTime <= 0){
+			lineRend.enabled = true;
+		} 
 
-		lineRend.enabled = true;
 	}
 
 	public void Death(){
-		
+		player.Explode();
 		spawner.score++;
 		spawner.ScoreAnim();
 		Instantiate(effect, transform.position, Quaternion.identity);

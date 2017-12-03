@@ -9,7 +9,17 @@ public class About : MonoBehaviour {
 
 	private bool inside = false;
 
+	private CustomizationManager manager;
+
+	void Start(){
+
+		manager = GameObject.FindGameObjectWithTag("CustomizationManager").GetComponent<CustomizationManager>();
+
+	}
+
 	public void Go(){
+		manager.source.clip = manager.click;
+		manager.source.Play();
 		if(inside == false){
 			AboutPage();
 		} else {
