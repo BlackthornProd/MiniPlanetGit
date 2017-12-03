@@ -10,6 +10,8 @@ public class Wall : MonoBehaviour {
 	public Animator panelRed;
 	public Animator fadePanel;
 
+
+
 	void Start(){
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Planet>();
 		spawner = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<Spawner>();
@@ -21,7 +23,7 @@ public class Wall : MonoBehaviour {
 			panelRed.enabled = true;
 			spawner.enabled = false;
 			player.enabled = false;
-
+			spawner.stop = true;
 			Instantiate(redCircle, other.transform.position, Quaternion.identity);
 			spawner.StartRout();
 		}	

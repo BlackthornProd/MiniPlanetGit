@@ -12,9 +12,12 @@ public class CustomizationManager : MonoBehaviour {
 	public SpriteRenderer rend;
 	private VisualDetector visuals;
 
+	public Animator fadePanel;
+
 	void Start(){
 
 		visuals = GameObject.FindGameObjectWithTag("Visuals").GetComponent<VisualDetector>();
+		fadePanel.SetTrigger("FadeOut");
 	}
 
 	void Update(){
@@ -41,6 +44,13 @@ public class CustomizationManager : MonoBehaviour {
 
 	public void Play(){
 
+		StartCoroutine(GoToPlay());
+	}
+
+	IEnumerator GoToPlay(){
+
+		fadePanel.SetTrigger("FadeIn");
+		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene("Game");
 	}
 }

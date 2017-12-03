@@ -114,8 +114,8 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 0dd902e162b6a3f468c1c0666f635030, type: 3}
   - {fileID: 21300004, guid: 0dd902e162b6a3f468c1c0666f635030, type: 3}
   - {fileID: 21300006, guid: 0dd902e162b6a3f468c1c0666f635030, type: 3}
-  minSpeed: 4
-  maxSpeed: 7.5
+  minSpeed: 5
+  maxSpeed: 8.5
 --- !u!120 &120118509277818720
 LineRenderer:
   m_ObjectHideFlags: 1

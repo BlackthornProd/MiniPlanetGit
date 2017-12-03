@@ -19,14 +19,17 @@ public class Spawner : MonoBehaviour {
 	public float startTimeBtwSpawns;
 	public float decrement;
 
+	public bool stop = false;
+
 	void Start(){
 
 		timeBtwSpawns = startTimeBtwSpawns;
+		fadePanel.SetTrigger("FadeOut");
 	}
 
 	void Update(){
 
-		scoreDisplay.text = "Yourself - " + score;
+		scoreDisplay.text = "Yourself | " + score;
 
 		Debug.Log(startTimeBtwSpawns);
 

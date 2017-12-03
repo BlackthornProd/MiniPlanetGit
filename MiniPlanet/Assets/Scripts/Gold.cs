@@ -27,12 +27,16 @@ public class Gold : MonoBehaviour {
 
 	void Update(){
 		transform.position = Vector2.MoveTowards(transform.position, planet.position, speed * Time.deltaTime);
+
+		if(spawner.stop == true){
+			speed = 0;
+		}
 	}
 
 
 	void OnTriggerEnter2D(Collider2D other){
 
-		if(other.CompareTag("Slime")){
+		if(other.CompareTag("Slime") && spawner.stop == false){
 			other.GetComponent<Slime>().Death();
 			spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns + spawner.decrement;
 		}

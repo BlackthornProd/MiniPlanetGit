@@ -34,7 +34,11 @@ public class Slime : MonoBehaviour {
 
 		lineRend = GetComponent<LineRenderer>();
 		lineRend.enabled = false;
-	
+
+
+		if(spawner.stop == true){
+			speed = 0;
+		}
 		
 	}
 
@@ -52,7 +56,7 @@ public class Slime : MonoBehaviour {
 			speed = 0;
 			this.gameObject.transform.parent = other.transform;
 
-			if(spawner.startTimeBtwSpawns > 0.1f && hasDamaged == false){
+			if(spawner.startTimeBtwSpawns > 0.2f && hasDamaged == false){
 				hasDamaged = true;
 				spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns - spawner.decrement;
 			}
@@ -61,7 +65,7 @@ public class Slime : MonoBehaviour {
 			speed = 0;
 			this.gameObject.transform.parent = planet.transform;
 
-			if(spawner.startTimeBtwSpawns > 0.1f && hasDamaged == false){
+			if(spawner.startTimeBtwSpawns > 0.2f && hasDamaged == false){
 				hasDamaged = true;
 				spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns - spawner.decrement;
 			}
