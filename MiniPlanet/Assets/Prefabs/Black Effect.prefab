@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4591788157985236}
   - component: {fileID: 198015317379296524}
   - component: {fileID: 199621244805706024}
+  - component: {fileID: 114194337430625276}
   m_Layer: 0
   m_Name: Black Effect
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -181.685, y: 0, z: 0}
+--- !u!114 &114194337430625276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392364098361710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc74b1ac379c14eb22531c70ddd885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
 --- !u!198 &198015317379296524
 ParticleSystem:
   m_ObjectHideFlags: 1

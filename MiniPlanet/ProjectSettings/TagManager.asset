@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - GameMaster
   - Visuals
+  - Gold
   layers:
   - Default
   - TransparentFX

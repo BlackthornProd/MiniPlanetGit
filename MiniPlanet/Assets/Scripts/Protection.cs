@@ -15,6 +15,9 @@ public class Protection : MonoBehaviour {
 		if(other.CompareTag("Slime")){
 			shake.Shaker(0.125f, 0.125f);
 			other.GetComponent<Slime>().Death();
-		}
+		} else if(other.CompareTag("Gold")){
+			shake.Shaker(0.125f, 0.125f);
+			other.GetComponent<Gold>().Death();
+		}	
 	}
 }

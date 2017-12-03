@@ -38,11 +38,17 @@ public class Gold : MonoBehaviour {
 
 		if(other.CompareTag("Slime") && spawner.stop == false){
 			other.GetComponent<Slime>().Death();
-			spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns + spawner.decrement;
+			Death();
 		}
+		speed = 0;
+		this.gameObject.transform.parent = other.transform;
+	}
 
-		shake.Shaker(0.125f, 0.125f);
-		Instantiate(effect, transform.position, Quaternion.identity);
-		Destroy(gameObject);
+	public void Death(){
+
+			spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns + spawner.decrement;
+			shake.Shaker(0.125f, 0.125f);
+			Instantiate(effect, transform.position, Quaternion.identity);
+			Destroy(gameObject);
 	}
 }

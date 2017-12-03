@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114592889564089404}
   m_Layer: 0
   m_Name: Gold
-  m_TagString: Untagged
+  m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1978035734944956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.937017, y: -1.6394382, z: 0}
+  m_LocalPosition: {x: -0.6777444, y: 0.7993598, z: 0}
   m_LocalScale: {x: 0.4212953, y: 0.4212953, z: 0.4212953}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,12 +72,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04, y: -0.12}
+  m_Offset: {x: -0.02, y: -0.12}
   serializedVersion: 2
-  m_Radius: 1.36
+  m_Radius: 1.06
 --- !u!114 &114592889564089404
 MonoBehaviour:
   m_ObjectHideFlags: 1
