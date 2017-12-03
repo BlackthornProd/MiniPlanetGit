@@ -5,7 +5,11 @@ using UnityEngine;
 public class Planet : MonoBehaviour {
 
 	public float speed;
+	private AudioSource source;
 
+	void Start(){
+		source = GetComponent<AudioSource>();
+	}
 
 	void Update(){
 

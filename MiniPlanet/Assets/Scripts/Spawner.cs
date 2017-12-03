@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour {
 	public GameObject[] slimes;
 	public int score = 0;
 	public Text scoreDisplay;
+	public Text highscoreDisplay;
 	public Animator scoreAnim;
 	public Animator fadePanel;
 
@@ -21,8 +22,11 @@ public class Spawner : MonoBehaviour {
 
 	public bool stop = false;
 
-	void Start(){
+	private VisualDetector visuals;
 
+	void Start(){
+		visuals = GameObject.FindGameObjectWithTag("Visuals").GetComponent<VisualDetector>();
+		visuals.unlockedScene = true;
 		timeBtwSpawns = startTimeBtwSpawns;
 		fadePanel.SetTrigger("FadeOut");
 	}
@@ -41,10 +45,21 @@ public class Spawner : MonoBehaviour {
 		} else {
 			timeBtwSpawns -= Time.deltaTime;
 		}
+
+
+
+		if(score > PlayerPrefs.GetInt("HighScore", 0)){
+			PlayerPrefs.SetInt("HighScore", score);
+		}
+
+		highscoreDisplay.text = "Best | " + PlayerPrefs.GetInt("HighScore");
+
+		if(Input.GetKeyDown(KeyCode.Space)){
+			SceneManager.LoadScene("MainMenu");
+		}
 	}
 
 	public void ScoreAnim(){
-
 		scoreAnim.SetTrigger("Yourself");
 	}
 

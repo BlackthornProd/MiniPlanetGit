@@ -17,10 +17,15 @@ public class Slime : MonoBehaviour {
 	public float maxSpeed;
 
 	private bool hasDamaged;
+	private AudioSource source;
+	public AudioClip squish;
+
+
+
 
 
 	void Start(){	
-
+		source = GetComponent<AudioSource>();
 		spawner = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<Spawner>();
 
 		int randHead = Random.Range(0, heads.Length);
@@ -52,6 +57,9 @@ public class Slime : MonoBehaviour {
 
 
 	void OnTriggerEnter2D(Collider2D other){
+
+		source.clip = squish;
+		source.Play();
 		if(other.CompareTag("Player")){
 			speed = 0;
 			this.gameObject.transform.parent = other.transform;
@@ -76,6 +84,7 @@ public class Slime : MonoBehaviour {
 	}
 
 	public void Death(){
+		
 		spawner.score++;
 		spawner.ScoreAnim();
 		Instantiate(effect, transform.position, Quaternion.identity);

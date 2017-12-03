@@ -10,6 +10,7 @@ TagManager:
   - GameMaster
   - Visuals
   - Gold
+  - CustomizationManager
   layers:
   - Default
   - TransparentFX

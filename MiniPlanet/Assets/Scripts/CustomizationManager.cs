@@ -11,16 +11,29 @@ public class CustomizationManager : MonoBehaviour {
 	public Sprite[] characters;
 	public SpriteRenderer rend;
 	private VisualDetector visuals;
+	private CustomizationManager customization;
 
 	public Animator fadePanel;
+
+	public bool unlocked;
+	public Sprite sun;
 
 	void Start(){
 
 		visuals = GameObject.FindGameObjectWithTag("Visuals").GetComponent<VisualDetector>();
 		fadePanel.SetTrigger("FadeOut");
+
+		visuals.unlockedScene = false;
 	}
 
 	void Update(){
+		if(visuals.unlocked == true){
+			unlocked = true;
+		}
+
+		if(unlocked == true){
+			characters[8] = sun;
+		}
 
 		visuals.visual = currentIndex;
 
@@ -44,7 +57,10 @@ public class CustomizationManager : MonoBehaviour {
 
 	public void Play(){
 
-		StartCoroutine(GoToPlay());
+		if(currentIndex != 8 && unlocked == false){
+			StartCoroutine(GoToPlay());
+		}
+
 	}
 
 	IEnumerator GoToPlay(){

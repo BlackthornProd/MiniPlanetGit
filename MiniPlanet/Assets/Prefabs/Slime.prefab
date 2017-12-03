@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 50780542681709682}
   - component: {fileID: 95191903390723622}
   - component: {fileID: 120118509277818720}
+  - component: {fileID: 82073066648833422}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Slime
@@ -80,6 +81,86 @@ CircleCollider2D:
   m_Offset: {x: -0.06, y: 0.02}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!82 &82073066648833422
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696733347025812}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95191903390723622
 Animator:
   serializedVersion: 3
@@ -114,8 +195,9 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 0dd902e162b6a3f468c1c0666f635030, type: 3}
   - {fileID: 21300004, guid: 0dd902e162b6a3f468c1c0666f635030, type: 3}
   - {fileID: 21300006, guid: 0dd902e162b6a3f468c1c0666f635030, type: 3}
-  minSpeed: 5
-  maxSpeed: 8.5
+  minSpeed: 6.5
+  maxSpeed: 10
+  squish: {fileID: 8300000, guid: 39b20d5c16e4d774289e0c91669e91d1, type: 3}
 --- !u!120 &120118509277818720
 LineRenderer:
   m_ObjectHideFlags: 1
