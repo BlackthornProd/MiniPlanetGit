@@ -52,7 +52,7 @@ public class Slime : MonoBehaviour {
 			speed = 0;
 			this.gameObject.transform.parent = other.transform;
 
-			if(spawner.startTimeBtwSpawns > 0.3f && hasDamaged == false){
+			if(spawner.startTimeBtwSpawns > 0.1f && hasDamaged == false){
 				hasDamaged = true;
 				spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns - spawner.decrement;
 			}
@@ -61,7 +61,7 @@ public class Slime : MonoBehaviour {
 			speed = 0;
 			this.gameObject.transform.parent = planet.transform;
 
-			if(spawner.startTimeBtwSpawns > 0.3f && hasDamaged == false){
+			if(spawner.startTimeBtwSpawns > 0.1f && hasDamaged == false){
 				hasDamaged = true;
 				spawner.startTimeBtwSpawns = spawner.startTimeBtwSpawns - spawner.decrement;
 			}
@@ -72,7 +72,8 @@ public class Slime : MonoBehaviour {
 	}
 
 	public void Death(){
-
+		spawner.score++;
+		spawner.ScoreAnim();
 		Instantiate(effect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}

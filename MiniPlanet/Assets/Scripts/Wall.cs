@@ -8,6 +8,7 @@ public class Wall : MonoBehaviour {
 	private Planet player;
 	public GameObject redCircle;
 	public Animator panelRed;
+	public Animator fadePanel;
 
 	void Start(){
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Planet>();
@@ -22,7 +23,9 @@ public class Wall : MonoBehaviour {
 			player.enabled = false;
 
 			Instantiate(redCircle, other.transform.position, Quaternion.identity);
+			spawner.StartRout();
 		}	
 	}
+
 
 }
