@@ -30,12 +30,12 @@ public class VisualDetector : MonoBehaviour {
 	}
 
 	void Update(){
-			if(unlockedScene == true){
+			/*if(unlockedScene == true){
 				spawner = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<Spawner>();
 				if(spawner.score > 100){
 					unlocked = true;
 				}
-			}
+			}*/
 
 	}
 }

@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour {
 
 	void Update(){
 
-		scoreDisplay.text = "Yourself | " + score;
+		scoreDisplay.text = "" + score;
 
 		Debug.Log(startTimeBtwSpawns);
 
@@ -46,13 +46,17 @@ public class Spawner : MonoBehaviour {
 			timeBtwSpawns -= Time.deltaTime;
 		}
 
+		if(PlayerPrefs.GetInt("HighScore", 0) > 100){
+			visuals.unlocked = true;
+		}
 
 
 		if(score > PlayerPrefs.GetInt("HighScore", 0)){
 			PlayerPrefs.SetInt("HighScore", score);
+
 		}
 
-		highscoreDisplay.text = "Best | " + PlayerPrefs.GetInt("HighScore");
+		highscoreDisplay.text = "" + PlayerPrefs.GetInt("HighScore");
 
 		if(Input.GetKeyDown(KeyCode.Space)){
 			SceneManager.LoadScene("MainMenu");

@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1028338692195898, guid: 853eec521d3ba5c49b1b50ffe999bd51, type: 2}
-  minSpeed: 4
-  maxSpeed: 6
+  minSpeed: 6
+  maxSpeed: 8.5
   cantDieTime: 0.5
 --- !u!212 &212698192949703884
 SpriteRenderer:
